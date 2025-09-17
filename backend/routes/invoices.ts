@@ -74,7 +74,7 @@ router.post('/send-email', async (req: Request, res: Response) => {
         await transporter.sendMail({
             from: `"Invoice Generator" <${process.env.EMAIL_USER}>`, // sender address
             to: invoiceData.clientEmail, // list of receivers
-            subject: `Invoice #${invoiceData.invoiceNumber} from Your Company`, // Subject line
+            subject: `Invoice #${invoiceData.invoiceNumber} from Swetankan`, // Subject line
             text: `Hi ${invoiceData.clientName},\n\nPlease find your invoice attached.\n\nThank you!`, // plain text body
             attachments: [
                 {

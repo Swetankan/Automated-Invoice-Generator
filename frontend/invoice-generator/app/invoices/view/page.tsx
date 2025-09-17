@@ -42,8 +42,8 @@ export default function ViewInvoicePage() {
       const data = await response.json();
       setInvoice(data);
 
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
       setIsLoading(false);
     }

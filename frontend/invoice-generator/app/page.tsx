@@ -58,7 +58,7 @@ const InvoicePreviewModal = ({ isOpen, onClose, invoiceData }: ModalProps) => {
         <div className="p-8">
             {/* This is the styled invoice content, similar to the PDF template */}
             <div className="header flex justify-between items-start mb-10">
-                <div className="logo text-2xl font-bold text-gray-800 dark:text-gray-200">Your Company</div>
+                <div className="logo text-2xl font-bold text-gray-800 dark:text-gray-200">Swetankan</div>
                 <div className="invoice-title text-right">
                     <h1 className="text-4xl font-light text-teal-600 dark:text-teal-400 m-0">INVOICE</h1>
                 </div>
@@ -175,10 +175,10 @@ export default function NewInvoicePage() {
     setItems(items.filter(item => item.id !== id));
   };
 
-  const handleUpdateItem = (id: number, field: keyof Item, value: any) => {
+  const handleUpdateItem = (id: number, field: keyof Item, value: string | number) => {
     const updatedItems = items.map(item => {
-      // FIX: Corrected the condition to only parse numbers for quantity and rate
-      const numericValue = (field === 'quantity' || field === 'rate') ? parseFloat(value) || 0 : value;
+      // Convert to number only for quantity and rate fields
+      const numericValue = (field === 'quantity' || field === 'rate') ? parseFloat(value.toString()) || 0 : value;
       return item.id === id ? { ...item, [field]: numericValue } : item;
     });
     setItems(updatedItems);
